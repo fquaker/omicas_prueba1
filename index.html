@@ -21,6 +21,8 @@
     --paper-warm: #f3f1ec;
     --border: #e2e0da;
     --white: #ffffff;
+    --purple-light: #EEEDFE;
+    --purple: #534AB7;
   }
 
   body {
@@ -61,10 +63,7 @@
     margin-bottom: 0.6rem;
   }
 
-  header h1 em {
-    font-style: italic;
-    color: #9FE1CB;
-  }
+  header h1 em { font-style: italic; color: #9FE1CB; }
 
   header p {
     font-size: 0.9rem;
@@ -175,43 +174,18 @@
   .opt:disabled { cursor: default; transform: none; }
 
   .opt-letter {
-    width: 26px;
-    height: 26px;
-    border-radius: 50%;
-    background: var(--white);
-    border: 1px solid var(--border);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 0.72rem;
-    font-weight: 500;
-    color: var(--ink-muted);
-    flex-shrink: 0;
-    margin-top: 1px;
+    width: 26px; height: 26px; border-radius: 50%;
+    background: var(--white); border: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.72rem; font-weight: 500; color: var(--ink-muted);
+    flex-shrink: 0; margin-top: 1px;
     transition: background 0.15s, border-color 0.15s, color 0.15s;
   }
 
-  .opt.correct {
-    background: var(--teal-light);
-    border-color: var(--teal-mid);
-    color: #085041;
-  }
-  .opt.correct .opt-letter {
-    background: var(--teal-mid);
-    border-color: var(--teal-mid);
-    color: #fff;
-  }
-
-  .opt.wrong {
-    background: var(--red-light);
-    border-color: var(--red);
-    color: var(--red);
-  }
-  .opt.wrong .opt-letter {
-    background: var(--red);
-    border-color: var(--red);
-    color: #fff;
-  }
+  .opt.correct { background: var(--teal-light); border-color: var(--teal-mid); color: #085041; }
+  .opt.correct .opt-letter { background: var(--teal-mid); border-color: var(--teal-mid); color: #fff; }
+  .opt.wrong { background: var(--red-light); border-color: var(--red); color: var(--red); }
+  .opt.wrong .opt-letter { background: var(--red); border-color: var(--red); color: #fff; }
 
   .feedback {
     margin-top: 1.25rem;
@@ -223,19 +197,8 @@
     animation: fadeUp 0.25s ease;
   }
 
-  .feedback.correct {
-    background: var(--teal-light);
-    border-left: 3px solid var(--teal-mid);
-    color: #085041;
-    display: block;
-  }
-
-  .feedback.wrong {
-    background: var(--red-light);
-    border-left: 3px solid var(--red);
-    color: var(--red);
-    display: block;
-  }
+  .feedback.correct { background: var(--teal-light); border-left: 3px solid var(--teal-mid); color: #085041; display: block; }
+  .feedback.wrong   { background: var(--red-light);  border-left: 3px solid var(--red);      color: var(--red); display: block; }
 
   .footer-row {
     display: flex;
@@ -244,157 +207,118 @@
     margin-top: 1.5rem;
   }
 
-  .score-pill {
-    font-size: 0.8rem;
-    color: var(--ink-faint);
-  }
+  .score-pill { font-size: 0.8rem; color: var(--ink-faint); }
 
   .next-btn {
-    background: var(--ink);
-    color: var(--white);
-    border: none;
-    border-radius: 8px;
-    padding: 10px 22px;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 0.9rem;
-    font-weight: 400;
-    cursor: pointer;
-    display: none;
+    background: var(--ink); color: var(--white); border: none;
+    border-radius: 8px; padding: 10px 22px;
+    font-family: 'DM Sans', sans-serif; font-size: 0.9rem;
+    cursor: pointer; display: none;
     transition: background 0.15s, transform 0.1s;
   }
-
-  .next-btn:hover { background: #333; transform: translateX(1px); }
+  .next-btn:hover { background: #333; }
   .next-btn:active { transform: scale(0.98); }
 
-  /* Score screen */
-  .score-screen {
-    display: none;
-    animation: fadeUp 0.4s ease;
-  }
-
-  .score-screen.visible { display: block; }
-
-  .score-hero {
+  /* Pantalla de nombre */
+  .name-screen {
     background: var(--white);
     border: 1px solid var(--border);
     border-radius: 16px;
     padding: 2.5rem 2rem;
     text-align: center;
-    margin-bottom: 1.25rem;
+    animation: fadeUp 0.35s cubic-bezier(.4,0,.2,1);
   }
 
-  .score-number {
+  .name-screen h2 {
     font-family: 'DM Serif Display', serif;
-    font-size: 5rem;
+    font-size: 1.5rem;
     font-weight: 400;
+    margin-bottom: 0.5rem;
     color: var(--ink);
-    line-height: 1;
-    margin-bottom: 0.25rem;
   }
 
-  .score-denom {
-    font-size: 1rem;
+  .name-screen p {
+    font-size: 0.9rem;
     color: var(--ink-muted);
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
   }
 
-  .score-msg {
+  .name-input {
+    width: 100%;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 12px 16px;
+    font-family: 'DM Sans', sans-serif;
     font-size: 1rem;
     color: var(--ink);
-    line-height: 1.6;
-    max-width: 380px;
-    margin: 0 auto 1.5rem;
+    background: var(--paper-warm);
+    margin-bottom: 1rem;
+    transition: border-color 0.15s;
+    outline: none;
   }
 
-  .meter-track {
-    background: var(--border);
-    height: 6px;
-    border-radius: 99px;
-    overflow: hidden;
-    max-width: 240px;
-    margin: 0 auto 1.75rem;
+  .name-input:focus { border-color: var(--teal-mid); background: var(--white); }
+
+  .start-btn {
+    background: var(--ink); color: var(--white); border: none;
+    border-radius: 8px; padding: 12px 32px;
+    font-family: 'DM Sans', sans-serif; font-size: 1rem;
+    cursor: pointer; transition: background 0.15s;
+    width: 100%;
+  }
+  .start-btn:hover { background: #333; }
+  .start-btn:disabled { background: var(--border); color: var(--ink-faint); cursor: default; }
+
+  /* Score screen */
+  .score-screen { display: none; animation: fadeUp 0.4s ease; }
+  .score-screen.visible { display: block; }
+
+  .score-hero {
+    background: var(--white); border: 1px solid var(--border);
+    border-radius: 16px; padding: 2.5rem 2rem;
+    text-align: center; margin-bottom: 1.25rem;
   }
 
-  .meter-fill {
-    height: 100%;
-    border-radius: 99px;
-    background: var(--teal-mid);
-    transition: width 1s cubic-bezier(.4,0,.2,1);
+  .score-number { font-family: 'DM Serif Display', serif; font-size: 5rem; font-weight: 400; color: var(--ink); line-height: 1; margin-bottom: 0.25rem; }
+  .score-denom { font-size: 1rem; color: var(--ink-muted); margin-bottom: 1rem; }
+  .score-msg { font-size: 1rem; color: var(--ink); line-height: 1.6; max-width: 380px; margin: 0 auto 1.5rem; }
+
+  .meter-track { background: var(--border); height: 6px; border-radius: 99px; overflow: hidden; max-width: 240px; margin: 0 auto 1.75rem; }
+  .meter-fill { height: 100%; border-radius: 99px; background: var(--teal-mid); transition: width 1s cubic-bezier(.4,0,.2,1); }
+
+  .sending-msg {
+    font-size: 0.85rem;
+    color: var(--ink-faint);
+    margin-bottom: 1rem;
+    min-height: 20px;
   }
+
+  .sending-msg.ok   { color: var(--teal); }
+  .sending-msg.fail { color: var(--red); }
 
   .retry-btn {
-    background: transparent;
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 9px 22px;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 0.9rem;
-    color: var(--ink);
-    cursor: pointer;
+    background: transparent; border: 1px solid var(--border);
+    border-radius: 8px; padding: 9px 22px;
+    font-family: 'DM Sans', sans-serif; font-size: 0.9rem;
+    color: var(--ink); cursor: pointer;
     transition: background 0.15s;
   }
   .retry-btn:hover { background: var(--paper-warm); }
 
-  .result-list {
-    background: var(--white);
-    border: 1px solid var(--border);
-    border-radius: 16px;
-    overflow: hidden;
-  }
-
-  .result-list-title {
-    font-size: 0.72rem;
-    font-weight: 500;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--ink-faint);
-    padding: 1rem 1.5rem 0.75rem;
-    border-bottom: 1px solid var(--border);
-  }
-
-  .result-item {
-    display: flex;
-    align-items: flex-start;
-    gap: 12px;
-    padding: 0.85rem 1.5rem;
-    border-bottom: 1px solid var(--border);
-    font-size: 0.88rem;
-    line-height: 1.5;
-    color: var(--ink-muted);
-  }
-
+  .result-list { background: var(--white); border: 1px solid var(--border); border-radius: 16px; overflow: hidden; }
+  .result-list-title { font-size: 0.72rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-faint); padding: 1rem 1.5rem 0.75rem; border-bottom: 1px solid var(--border); }
+  .result-item { display: flex; align-items: flex-start; gap: 12px; padding: 0.85rem 1.5rem; border-bottom: 1px solid var(--border); font-size: 0.88rem; line-height: 1.5; color: var(--ink-muted); }
   .result-item:last-child { border-bottom: none; }
-
-  .result-icon {
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    flex-shrink: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 0.65rem;
-    font-weight: 500;
-    margin-top: 1px;
-  }
-
-  .result-icon.ok { background: var(--teal-mid); color: #fff; }
+  .result-icon { width: 20px; height: 20px; border-radius: 50%; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 0.65rem; font-weight: 500; margin-top: 1px; }
+  .result-icon.ok   { background: var(--teal-mid); color: #fff; }
   .result-icon.fail { background: var(--red); color: #fff; }
 
-  footer {
-    width: 100%;
-    text-align: center;
-    padding: 1.5rem;
-    font-size: 0.75rem;
-    color: var(--ink-faint);
-    border-top: 1px solid var(--border);
-    margin-top: auto;
-  }
+  footer { width: 100%; text-align: center; padding: 1.5rem; font-size: 0.75rem; color: var(--ink-faint); border-top: 1px solid var(--border); margin-top: auto; }
 
   @media (max-width: 520px) {
     header { padding: 2rem 1.25rem 1.75rem; }
     .quiz-shell { padding: 1.75rem 1rem 3rem; }
-    .card { padding: 1.5rem 1.25rem; }
+    .card, .name-screen, .score-hero { padding: 1.5rem 1.25rem; }
     .q-text { font-size: 1.1rem; }
     .result-item { padding: 0.75rem 1rem; }
     .result-list-title { padding: 0.85rem 1rem 0.65rem; }
@@ -412,8 +336,25 @@
 
 <div class="quiz-shell">
 
+  <!-- Pantalla de nombre -->
+  <div id="name-screen" class="name-screen">
+    <h2>Antes de comenzar</h2>
+    <p>Ingresá tu nombre para que quede registrado el resultado</p>
+    <input
+      type="text"
+      id="nombre-input"
+      class="name-input"
+      placeholder="Ej: María García"
+      autocomplete="off"
+      oninput="document.getElementById('start-btn').disabled = this.value.trim().length < 2"
+    />
+    <button class="start-btn" id="start-btn" disabled onclick="startQuiz()">
+      Comenzar el quiz →
+    </button>
+  </div>
+
   <!-- Quiz activo -->
-  <div id="quiz-active">
+  <div id="quiz-active" style="display:none">
     <div class="progress-wrap">
       <div class="progress-track"><div class="progress-fill" id="prog"></div></div>
       <span class="progress-label" id="prog-label">1 / 5</span>
@@ -438,6 +379,7 @@
       <div class="score-denom" id="s-denom">de 5 correctas</div>
       <div class="meter-track"><div class="meter-fill" id="s-meter" style="width:0%"></div></div>
       <p class="score-msg" id="s-msg"></p>
+      <p class="sending-msg" id="sending-msg">Registrando resultado…</p>
       <button class="retry-btn" onclick="restart()">↺ Intentar de nuevo</button>
     </div>
     <div class="result-list">
@@ -453,170 +395,209 @@
 </footer>
 
 <script>
-const questions = [
-  {
-    q: "¿Qué son las 'ómicas' en el contexto de la biología y la medicina?",
-    opts: [
-      "Técnicas de imagen radiológica avanzada que analizan tejidos",
-      "Tecnologías que miden miles de moléculas biológicas de manera simultánea en una célula o tejido",
-      "Algoritmos de inteligencia artificial que procesan historias clínicas",
-      "Métodos de análisis estadístico de datos epidemiológicos poblacionales"
-    ],
-    correct: 1,
-    feedback: "Las ómicas permiten obtener una fotografía molecular completa del organismo midiendo masivamente ADN, ARN, proteínas y metabolitos, a diferencia de los estudios clásicos que analizaban moléculas de forma aislada."
-  },
-  {
-    q: "¿Cuál de las siguientes NO es una capa ómica mencionada en el resumen?",
-    opts: [
-      "Genómica (análisis del ADN)",
-      "Transcriptómica (ARN mensajero activo)",
-      "Radiómica (análisis de imágenes médicas)",
-      "Metabolómica (metabolitos circulantes)"
-    ],
-    correct: 2,
-    feedback: "La radiómica analiza características de imágenes médicas, pero no es una capa ómica molecular. Las ómicas descritas son genómica, transcriptómica, proteómica y metabolómica, cada una con una dimensión distinta de información biológica."
-  },
-  {
-    q: "¿Cuál es el enfoque innovador que propone el artículo para analizar datos multi-ómicos?",
-    opts: [
-      "Usar secuenciación genómica de nueva generación directamente en el consultorio",
-      "Transformar los datos moleculares en formato de imagen para aplicar algoritmos de deep learning",
-      "Integrar los datos ómicos con encuestas de calidad de vida del paciente",
-      "Reducir la cantidad de variables analizadas para simplificar el procesamiento"
-    ],
-    correct: 1,
-    feedback: "Al convertir datos ómicos abstractos en imágenes, se pueden aprovechar los mismos algoritmos de inteligencia artificial ya exitosos en radiología y patología digital, sorteando el problema de la alta dimensionalidad de los datos."
-  },
-  {
-    q: "¿Qué rango de precisión diagnóstica reportaron los estudios revisados al aplicar esta metodología?",
-    opts: [
-      "Entre 30% y 60%",
-      "Entre 50% y 70%",
-      "Entre 75% y 99%",
-      "Exactamente 100% en todos los casos"
-    ],
-    correct: 2,
-    feedback: "Los estudios reportaron precisiones entre 75% y 99% en clasificación de enfermedades, siendo los modelos basados en redes neuronales convolucionales (CNN) los de mejor desempeño en la integración de interacciones moleculares complejas."
-  },
-  {
-    q: "¿Cuál es la principal limitación que el artículo señala para la aplicación clínica rutinaria de esta tecnología?",
-    opts: [
-      "El costo excesivo de los equipos de secuenciación genómica",
-      "La falta de interés por parte de la industria farmacéutica",
-      "Problemas de sobreajuste y generalización limitada a nuevas poblaciones o contextos clínicos",
-      "La imposibilidad técnica de integrar más de dos capas ómicas simultáneamente"
-    ],
-    correct: 2,
-    feedback: "Aunque los resultados son prometedores, persisten desafíos como el overfitting (sobreajuste) y la generalización limitada, lo que significa que estos modelos aún requieren validación prospectiva y multicéntrica antes de su uso rutinario en la práctica clínica."
-  }
-];
+  // =============================================
+  // REEMPLAZÁ ESTA URL con la de tu Apps Script
+  // =============================================
+  const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxlZeagjSiP6RGM-ZJvRuGCmWfd1tpPudSVFb96Y8nXrEPcXdmNzV8cubUTDbzuEBu_Vw/exec";
+  // =============================================
 
-let cur = 0, score = 0, log = [];
+  const questions = [
+    {
+      q: "¿Qué son las 'ómicas' en el contexto de la biología y la medicina?",
+      opts: [
+        "Técnicas de imagen radiológica avanzada que analizan tejidos",
+        "Tecnologías que miden miles de moléculas biológicas de manera simultánea en una célula o tejido",
+        "Algoritmos de inteligencia artificial que procesan historias clínicas",
+        "Métodos de análisis estadístico de datos epidemiológicos poblacionales"
+      ],
+      correct: 1,
+      feedback: "Las ómicas permiten obtener una fotografía molecular completa del organismo midiendo masivamente ADN, ARN, proteínas y metabolitos, a diferencia de los estudios clásicos que analizaban moléculas de forma aislada."
+    },
+    {
+      q: "¿Cuál de las siguientes NO es una capa ómica mencionada en el resumen?",
+      opts: [
+        "Genómica (análisis del ADN)",
+        "Transcriptómica (ARN mensajero activo)",
+        "Radiómica (análisis de imágenes médicas)",
+        "Metabolómica (metabolitos circulantes)"
+      ],
+      correct: 2,
+      feedback: "La radiómica analiza características de imágenes médicas, pero no es una capa ómica molecular. Las ómicas descritas son genómica, transcriptómica, proteómica y metabolómica, cada una con una dimensión distinta de información biológica."
+    },
+    {
+      q: "¿Cuál es el enfoque innovador que propone el artículo para analizar datos multi-ómicos?",
+      opts: [
+        "Usar secuenciación genómica de nueva generación directamente en el consultorio",
+        "Transformar los datos moleculares en formato de imagen para aplicar algoritmos de deep learning",
+        "Integrar los datos ómicos con encuestas de calidad de vida del paciente",
+        "Reducir la cantidad de variables analizadas para simplificar el procesamiento"
+      ],
+      correct: 1,
+      feedback: "Al convertir datos ómicos abstractos en imágenes, se pueden aprovechar los mismos algoritmos de inteligencia artificial ya exitosos en radiología y patología digital, sorteando el problema de la alta dimensionalidad de los datos."
+    },
+    {
+      q: "¿Qué rango de precisión diagnóstica reportaron los estudios revisados al aplicar esta metodología?",
+      opts: [
+        "Entre 30% y 60%",
+        "Entre 50% y 70%",
+        "Entre 75% y 99%",
+        "Exactamente 100% en todos los casos"
+      ],
+      correct: 2,
+      feedback: "Los estudios reportaron precisiones entre 75% y 99% en clasificación de enfermedades, siendo los modelos basados en redes neuronales convolucionales (CNN) los de mejor desempeño en la integración de interacciones moleculares complejas."
+    },
+    {
+      q: "¿Cuál es la principal limitación que el artículo señala para la aplicación clínica rutinaria de esta tecnología?",
+      opts: [
+        "El costo excesivo de los equipos de secuenciación genómica",
+        "La falta de interés por parte de la industria farmacéutica",
+        "Problemas de sobreajuste y generalización limitada a nuevas poblaciones o contextos clínicos",
+        "La imposibilidad técnica de integrar más de dos capas ómicas simultáneamente"
+      ],
+      correct: 2,
+      feedback: "Aunque los resultados son prometedores, persisten desafíos como el overfitting (sobreajuste) y la generalización limitada, lo que significa que estos modelos aún requieren validación prospectiva y multicéntrica antes de su uso rutinario en la práctica clínica."
+    }
+  ];
 
-function render() {
-  const q = questions[cur];
-  const pct = (cur / questions.length) * 100;
-  document.getElementById('prog').style.width = pct + '%';
-  document.getElementById('prog-label').textContent = (cur + 1) + ' / ' + questions.length;
-  document.getElementById('q-num').textContent = 'Pregunta ' + (cur + 1);
-  document.getElementById('q-text').textContent = q.q;
+  let cur = 0, score = 0, log = [], nombreAlumno = "";
 
-  const letters = ['A','B','C','D'];
-  const opts = document.getElementById('options');
-  opts.innerHTML = '';
-  q.opts.forEach((o, i) => {
-    const btn = document.createElement('button');
-    btn.className = 'opt';
-    btn.innerHTML = '<span class="opt-letter">' + letters[i] + '</span><span>' + o + '</span>';
-    btn.onclick = () => pick(i);
-    opts.appendChild(btn);
-  });
-
-  const fb = document.getElementById('feedback');
-  fb.className = 'feedback';
-  fb.textContent = '';
-  document.getElementById('next-btn').style.display = 'none';
-  document.getElementById('score-pill').textContent = '';
-
-  // re-trigger animation
-  const card = document.getElementById('card');
-  card.style.animation = 'none';
-  card.offsetHeight;
-  card.style.animation = '';
-}
-
-function pick(idx) {
-  const q = questions[cur];
-  const btns = document.querySelectorAll('.opt');
-  btns.forEach(b => b.disabled = true);
-  const ok = idx === q.correct;
-  btns[idx].className = 'opt ' + (ok ? 'correct' : 'wrong');
-  if (!ok) btns[q.correct].className = 'opt correct';
-  if (ok) score++;
-  log.push(ok);
-
-  const fb = document.getElementById('feedback');
-  fb.className = 'feedback ' + (ok ? 'correct' : 'wrong');
-  fb.textContent = (ok ? '✓ ' : '✗ ') + q.feedback;
-
-  document.getElementById('score-pill').textContent = 'Puntaje: ' + score + ' / ' + (cur + 1);
-  const nb = document.getElementById('next-btn');
-  nb.style.display = 'inline-block';
-  nb.textContent = cur < questions.length - 1 ? 'Siguiente →' : 'Ver resultados →';
-}
-
-document.getElementById('next-btn').addEventListener('click', () => {
-  cur++;
-  if (cur < questions.length) {
+  function startQuiz() {
+    nombreAlumno = document.getElementById('nombre-input').value.trim();
+    if (nombreAlumno.length < 2) return;
+    document.getElementById('name-screen').style.display = 'none';
+    document.getElementById('quiz-active').style.display = 'block';
     render();
-  } else {
-    showScore();
   }
-});
 
-function showScore() {
-  document.getElementById('quiz-active').style.display = 'none';
-  const ss = document.getElementById('score-screen');
-  ss.classList.add('visible');
+  function render() {
+    const q = questions[cur];
+    const pct = (cur / questions.length) * 100;
+    document.getElementById('prog').style.width = pct + '%';
+    document.getElementById('prog-label').textContent = (cur + 1) + ' / ' + questions.length;
+    document.getElementById('q-num').textContent = 'Pregunta ' + (cur + 1);
+    document.getElementById('q-text').textContent = q.q;
 
-  document.getElementById('s-num').textContent = score;
-  document.getElementById('s-denom').textContent = 'de ' + questions.length + ' correctas';
+    const letters = ['A','B','C','D'];
+    const opts = document.getElementById('options');
+    opts.innerHTML = '';
+    q.opts.forEach((o, i) => {
+      const btn = document.createElement('button');
+      btn.className = 'opt';
+      btn.innerHTML = '<span class="opt-letter">' + letters[i] + '</span><span>' + o + '</span>';
+      btn.onclick = () => pick(i);
+      opts.appendChild(btn);
+    });
 
-  const pct = Math.round((score / questions.length) * 100);
-  setTimeout(() => {
-    document.getElementById('s-meter').style.width = pct + '%';
-  }, 100);
+    document.getElementById('feedback').className = 'feedback';
+    document.getElementById('feedback').textContent = '';
+    document.getElementById('next-btn').style.display = 'none';
+    document.getElementById('score-pill').textContent = '';
 
-  const msgs = {
-    100: '¡Excelente! Dominaste completamente el contenido del resumen.',
-    80: 'Muy bien. Comprendiste los conceptos centrales del artículo.',
-    60: 'Bien. Hay algunos conceptos que vale la pena repasar en el resumen.',
-    0: 'Te recomendamos releer el resumen con atención antes de continuar.'
-  };
-  const thresholds = [100, 80, 60, 0];
-  const msg = msgs[thresholds.find(t => pct >= t)];
-  document.getElementById('s-msg').textContent = msg;
+    const card = document.getElementById('card');
+    card.style.animation = 'none';
+    card.offsetHeight;
+    card.style.animation = '';
+  }
 
-  const rows = document.getElementById('result-rows');
-  rows.innerHTML = '';
-  log.forEach((ok, i) => {
-    const short = questions[i].q.length > 75 ? questions[i].q.slice(0, 72) + '…' : questions[i].q;
-    const div = document.createElement('div');
-    div.className = 'result-item';
-    div.innerHTML = '<span class="result-icon ' + (ok ? 'ok' : 'fail') + '">' + (ok ? '✓' : '✗') + '</span><span>' + short + '</span>';
-    rows.appendChild(div);
+  function pick(idx) {
+    const q = questions[cur];
+    const btns = document.querySelectorAll('.opt');
+    btns.forEach(b => b.disabled = true);
+    const ok = idx === q.correct;
+    btns[idx].className = 'opt ' + (ok ? 'correct' : 'wrong');
+    if (!ok) btns[q.correct].className = 'opt correct';
+    if (ok) score++;
+    log.push(ok);
+
+    const fb = document.getElementById('feedback');
+    fb.className = 'feedback ' + (ok ? 'correct' : 'wrong');
+    fb.textContent = (ok ? '✓ ' : '✗ ') + q.feedback;
+
+    document.getElementById('score-pill').textContent = 'Puntaje: ' + score + ' / ' + (cur + 1);
+    const nb = document.getElementById('next-btn');
+    nb.style.display = 'inline-block';
+    nb.textContent = cur < questions.length - 1 ? 'Siguiente →' : 'Ver resultados →';
+  }
+
+  document.getElementById('next-btn').addEventListener('click', () => {
+    cur++;
+    if (cur < questions.length) render();
+    else showScore();
   });
-}
 
-function restart() {
-  cur = 0; score = 0; log = [];
-  document.getElementById('score-screen').classList.remove('visible');
-  document.getElementById('quiz-active').style.display = 'block';
-  document.getElementById('prog').style.width = '0%';
-  render();
-}
+  function showScore() {
+    document.getElementById('quiz-active').style.display = 'none';
+    const ss = document.getElementById('score-screen');
+    ss.classList.add('visible');
 
-render();
+    document.getElementById('s-num').textContent = score;
+    document.getElementById('s-denom').textContent = 'de ' + questions.length + ' correctas';
+
+    const pct = Math.round((score / questions.length) * 100);
+    setTimeout(() => { document.getElementById('s-meter').style.width = pct + '%'; }, 100);
+
+    const thresholds = [100, 80, 60, 0];
+    const msgs = {
+      100: '¡Excelente! Dominaste completamente el contenido del resumen.',
+      80:  'Muy bien. Comprendiste los conceptos centrales del artículo.',
+      60:  'Bien. Hay algunos conceptos que vale la pena repasar en el resumen.',
+      0:   'Te recomendamos releer el resumen con atención antes de continuar.'
+    };
+    document.getElementById('s-msg').textContent = msgs[thresholds.find(t => pct >= t)];
+
+    const rows = document.getElementById('result-rows');
+    rows.innerHTML = '';
+    log.forEach((ok, i) => {
+      const short = questions[i].q.length > 75 ? questions[i].q.slice(0, 72) + '…' : questions[i].q;
+      const div = document.createElement('div');
+      div.className = 'result-item';
+      div.innerHTML = '<span class="result-icon ' + (ok ? 'ok' : 'fail') + '">' + (ok ? '✓' : '✗') + '</span><span>' + short + '</span>';
+      rows.appendChild(div);
+    });
+
+    enviarASheets(score, log);
+  }
+
+  function enviarASheets(puntaje, respuestas) {
+    const msg = document.getElementById('sending-msg');
+    msg.textContent = 'Registrando resultado…';
+    msg.className = 'sending-msg';
+
+    if (APPS_SCRIPT_URL === "PEGAR_AQUI_LA_URL_DE_TU_APPS_SCRIPT") {
+      msg.textContent = '⚠ Configurá la URL del Apps Script para activar el registro.';
+      msg.className = 'sending-msg fail';
+      return;
+    }
+
+    fetch(APPS_SCRIPT_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        nombre: nombreAlumno,
+        puntaje: puntaje,
+        total: questions.length,
+        respuestas: respuestas
+      })
+    })
+    .then(() => {
+      msg.textContent = '✓ Resultado registrado correctamente.';
+      msg.className = 'sending-msg ok';
+    })
+    .catch(() => {
+      msg.textContent = '✗ No se pudo registrar. Verificá tu conexión.';
+      msg.className = 'sending-msg fail';
+    });
+  }
+
+  function restart() {
+    cur = 0; score = 0; log = [];
+    document.getElementById('score-screen').classList.remove('visible');
+    document.getElementById('nombre-input').value = '';
+    document.getElementById('start-btn').disabled = true;
+    document.getElementById('name-screen').style.display = 'block';
+    document.getElementById('prog').style.width = '0%';
+  }
 </script>
 </body>
 </html>
